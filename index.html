@@ -25,37 +25,38 @@
       <div class="bg-[#1a1a1a] rounded-xl overflow-hidden my-4">
         <div class="relative">
           <div class="w-full h-36 bg-black" id="banner" style="background-size:cover;background-position:center;"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
-            <div class="flex items-end justify-between">
-              <span class="relative flex shrink-0 overflow-hidden rounded-full w-24 h-24 border-4 border-[#1a1a1a] avatar">
-                <img id="avatar-img" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover;" />
-                <span id="avatar-letter" class="flex h-full w-full items-center justify-center rounded-full avatar-inner">A</span>
-              </span>
-              <div class="flex items-center space-x-4 text-sm font-semibold">
-                <div class="flex items-center gap-1.5">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-                  <span id="stat-images">434</span>
-                </div>
-                <div class="flex items-center gap-1.5">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
-                  <span id="stat-videos">765</span>
-                </div>
-                <div class="flex items-center gap-1.5">
-                  <svg width="16" height="16" viewBox="0 0 512 512" fill="currentColor"><path d="M244 130.6l-12-13.5-4.2-4.7c-26-29.2-65.3-42.8-103.8-35.8c-53.3 9.7-92 56.1-92 110.3v3.5c0 32.3 13.4 63.1 37.1 85.1L253 446.8c.8.7 1.9 1.2 3 1.2s2.2-.4 3-1.2L443 275.5c23.6-22 37-52.8 37-85.1v-3.5c0-54.2-38.7-100.6-92-110.3c-38.5-7-77.8 6.6-103.8 35.8l-4.2 4.7-12 13.5c-3 3.4-7.4 5.4-12 5.4s-8.9-2-12-5.4z"/></svg>
-                  <span id="stat-likes">4.6K</span>
-                </div>
+          
+          <!-- Linha da Foto + Stats -->
+          <div class="flex items-end justify-between px-4" style="margin-top:-48px; position:relative; z-index:10;">
+            <span class="relative flex shrink-0 overflow-hidden rounded-full w-24 h-24 border-4 border-[#1a1a1a] avatar bg-[#1a1a1a]">
+              <img id="avatar-img" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover;" />
+              <span id="avatar-letter" class="flex h-full w-full items-center justify-center rounded-full avatar-inner">A</span>
+            </span>
+            <div class="flex items-center space-x-4 text-sm font-semibold pb-2">
+              <div class="flex items-center gap-1.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                <span id="stat-images">434</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
+                <span id="stat-videos">765</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg width="16" height="16" viewBox="0 0 512 512" fill="currentColor"><path d="M244 130.6l-12-13.5-4.2-4.7c-26-29.2-65.3-42.8-103.8-35.8c-53.3 9.7-92 56.1-92 110.3v3.5c0 32.3 13.4 63.1 37.1 85.1L253 446.8c.8.7 1.9 1.2 3 1.2s2.2-.4 3-1.2L443 275.5c23.6-22 37-52.8 37-85.1v-3.5c0-54.2-38.7-100.6-92-110.3c-38.5-7-77.8 6.6-103.8 35.8l-4.2 4.7-12 13.5c-3 3.4-7.4 5.4-12 5.4s-8.9-2-12-5.4z"/></svg>
+                <span id="stat-likes">4.6K</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="pt-14 p-4">
+        <!-- Informações do Perfil -->
+        <div class="p-4 pt-3">
           <div class="flex items-center gap-1">
             <h2 class="text-xl font-bold" id="profile-name" style="font-size:20px;">Milena</h2>
           </div>
-          <p class="text-gray-400" id="profile-username" style="font-size:16px;">@Mileninhasz</p>
-          <p class="mt-2 text-sm whitespace-pre-line" id="profile-bio"></p>
-          <div class="flex items-center gap-2 mt-2 text-sm text-gray-400" id="profile-location"></div>
+          <p class="text-gray-400 mt-1" id="profile-username" style="font-size:16px;">@Mileninhasz</p>
+          <p class="mt-3 text-sm whitespace-pre-line" id="profile-bio"></p>
+          <div class="flex items-center gap-2 mt-3 text-sm text-gray-400" id="profile-location"></div>
         </div>
       </div>
 
@@ -96,12 +97,13 @@
         </div>
       </div>
 
-      <!-- POST / VIDEO -->
+      <!-- POST / VIDEO (Aqui ta a mágica) -->
       <div class="bg-[#1a1a1a] rounded-xl my-4 overflow-hidden">
         <div class="p-4 flex justify-between items-start">
           <div class="flex items-center gap-3">
             <span class="relative flex shrink-0 overflow-hidden rounded-full w-10 h-10 avatar">
-              <span class="flex h-full w-full items-center justify-center rounded-full avatar-inner">A</span>
+              <img id="post-avatar-img" src="" style="display:none; width:100%; height:100%; object-fit:cover;" />
+              <span id="post-avatar-letter" class="flex h-full w-full items-center justify-center rounded-full avatar-inner">A</span>
             </span>
             <div>
               <p class="font-semibold" id="post-name" style="font-size:16px;">Milena</p>
@@ -110,11 +112,45 @@
           </div>
         </div>
 
+        <!-- Vídeo / Capa -->
         <div class="bg-black aspect-video w-full relative overflow-hidden cursor-pointer" onclick="openCheckout(null)">
+          
+          <!-- Se tiver capa, mostra ela. Se não, mostra o vídeo borrado -->
+          <img id="post-thumb" src="" style="display:none; width:100%; height:100%; object-fit:cover; position:absolute; inset:0;" />
           <video id="post-video" class="w-full h-full object-cover blur-md" autoplay muted loop playsinline></video>
+          
+          <!-- Ícone de Cadeado no meio -->
           <div class="absolute inset-0 flex items-center justify-center bg-black/30">
             <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="16" r="1"/><rect x="3" y="10" width="18" height="12" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></svg>
           </div>
+        </div>
+
+        <!-- Área dos botões de Like, Comentário e Save + Stats -->
+        <div class="p-4 flex justify-between items-center">
+          <div class="flex items-center gap-4 text-white">
+            <button class="hover:opacity-70 transition"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+            <button class="hover:opacity-70 transition"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></button>
+            <button class="hover:opacity-70 transition"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 18V6"></path></svg></button>
+          </div>
+          
+          <!-- Ícone de Salvar -->
+          <button class="text-white hover:opacity-70 transition"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg></button>
+        </div>
+
+        <!-- Números embaixo do post -->
+        <div class="px-4 pb-4 flex items-center gap-4 text-sm font-semibold text-white">
+            <div class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+              <span id="post-stat-images">434</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
+              <span id="post-stat-videos">765</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <svg width="16" height="16" viewBox="0 0 512 512" fill="currentColor"><path d="M244 130.6l-12-13.5-4.2-4.7c-26-29.2-65.3-42.8-103.8-35.8c-53.3 9.7-92 56.1-92 110.3v3.5c0 32.3 13.4 63.1 37.1 85.1L253 446.8c.8.7 1.9 1.2 3 1.2s2.2-.4 3-1.2L443 275.5c23.6-22 37-52.8 37-85.1v-3.5c0-54.2-38.7-100.6-92-110.3c-38.5-7-77.8 6.6-103.8 35.8l-4.2 4.7-12 13.5c-3 3.4-7.4 5.4-12 5.4s-8.9-2-12-5.4z"/></svg>
+              <span id="post-stat-likes">4.6K</span>
+            </div>
         </div>
       </div>
 
@@ -130,13 +166,11 @@
     </div>
   </div>
 
-  <!-- ===================== NOVO MODAL CHECKOUT (ESTILO DA IMAGEM) ===================== -->
+  <!-- MODAL CHECKOUT -->
   <div id="checkout-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(4px); z-index:100; align-items:center; justify-content:center; padding:16px;">
     <div style="background:#0a0a0a; border:1px solid #222; border-radius:16px; width:100%; max-width:380px; padding:24px; position:relative; font-family:'Inter',sans-serif; color:#fff;">
-      
-      <button onclick="closeCheckout()" style="position:absolute; top:16px; right:16px; background:none; border:none; color:#9ca3af; font-size:20px; cursor:pointer; line-height:1;">✕</button>
+      <button onclick="closeCheckout()" style="position:absolute; top:16px; right:16px; background:none; border:none; color:#9ca3af; font-size:20px; cursor:pointer;">✕</button>
 
-      <!-- Etapa 1: Confirmação -->
       <div id="step-form">
         <div style="display:flex; gap:12px; align-items:center; margin-bottom:24px;">
           <img id="modal-avatar" src="" style="width:56px; height:56px; border-radius:50%; object-fit:cover; display:none; border:2px solid #222;" />
@@ -146,58 +180,42 @@
             <p style="margin:0; color:#9ca3af; font-size:14px;" id="modal-username">@Mileninhasz</p>
           </div>
         </div>
-
         <h3 style="font-size:14px; margin-bottom:12px; font-weight:700;">Benefícios exclusivos</h3>
         <ul style="list-style:none; padding:0; margin:0 0 24px 0; font-size:14px; color:#d1d5db; display:flex; flex-direction:column; gap:10px;">
           <li style="display:flex; gap:8px; align-items:center;"><span style="color:#22c55e;">✓</span> Acesso ao conteúdo</li>
           <li style="display:flex; gap:8px; align-items:center;"><span style="color:#22c55e;">✓</span> Chat exclusivo com o criador</li>
           <li style="display:flex; gap:8px; align-items:center;"><span style="color:#22c55e;">✓</span> Cancele a qualquer hora</li>
         </ul>
-
         <hr style="border:0; border-top:1px solid #222; margin:0 0 16px 0;" />
-
         <h3 style="font-size:14px; margin-bottom:12px; font-weight:700;">Pagar com Pix</h3>
-        
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
           <span style="color:#9ca3af; font-size:14px;">Valor</span>
           <span style="font-size:18px; font-weight:800;" id="modal-price">R$ 19,95</span>
         </div>
-
-        <button class="btn-gradient w-full h-12 rounded-lg font-bold text-black" id="btn-gerar-pix" onclick="gerarPix()">
-          Gerar PIX
-        </button>
+        <button class="btn-gradient w-full h-12 rounded-lg font-bold text-black" id="btn-gerar-pix" onclick="gerarPix()">Gerar PIX</button>
         <p id="modal-error" style="color:#ef4444; font-size:12px; margin-top:12px; text-align:center;"></p>
       </div>
 
-      <!-- Etapa 2: Aguardando Pagamento -->
       <div id="step-pix" style="display:none; text-align:center;">
         <h3 style="font-size:16px; margin-bottom:16px; font-weight:700;">Escaneie o QR Code</h3>
         <div style="background:#fff; padding:12px; border-radius:12px; display:inline-block; margin-bottom:16px;">
-          <img id="pix-qr" src="" alt="QR Code" style="width:180px; height:180px;" />
+          <img id="pix-qr" src="" style="width:180px; height:180px;" />
         </div>
-        <p style="color:#9ca3af; font-size:12px; margin-bottom:12px;">Ou copie o código PIX abaixo:</p>
         <textarea id="pix-code" style="width:100%; background:#111; border:1px solid #333; color:#fff; padding:10px; border-radius:8px; font-size:12px; font-family:monospace; resize:none; margin-bottom:12px;" rows="2" readonly></textarea>
         <button onclick="copyPix()" style="width:100%; padding:12px; background:#222; color:#fff; border-radius:8px; border:none; font-weight:600; cursor:pointer; margin-bottom:24px;">📋 Copiar código</button>
-        
-        <div style="display:flex; align-items:center; justify-content:center; gap:8px; font-size:14px; color:#fbbf24;">
-          <span style="width:8px; height:8px; background:#fbbf24; border-radius:50%; animation:pulse 1.5s infinite;"></span>
-          Aguardando pagamento...
-        </div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px; font-size:14px; color:#fbbf24;"><span style="width:8px; height:8px; background:#fbbf24; border-radius:50%; animation:pulse 1.5s infinite;"></span>Aguardando pagamento...</div>
       </div>
 
-      <!-- Etapa 3: Sucesso -->
       <div id="step-success" style="display:none; text-align:center; padding:24px 0;">
         <div style="font-size:40px; margin-bottom:16px;">✅</div>
         <h3 style="font-size:18px; margin-bottom:8px;">Pagamento Confirmado!</h3>
-        <p style="color:#9ca3af; font-size:14px;">Seu acesso foi liberado com sucesso.</p>
         <button class="btn-gradient w-full h-12 rounded-lg font-bold text-black mt-6" onclick="closeCheckout()">Fechar</button>
       </div>
-
     </div>
   </div>
 
   <script>
-    let siteContent = null; // Guarda os dados do site
+    let siteContent = null;
 
     async function loadSite() {
       let content;
@@ -205,11 +223,8 @@
         const res = await fetch('/api/content', { cache: 'no-store' });
         const data = await res.json();
         content = data.content;
-        siteContent = content; // Salva globalmente
-      } catch (e) {
-        console.warn('Falha ao carregar conteúdo:', e);
-        return;
-      }
+        siteContent = content;
+      } catch (e) { return; }
 
       if (!content) return;
 
@@ -224,18 +239,24 @@
         document.getElementById('profile-name').textContent = content.profile.name || '—';
         document.getElementById('profile-username').textContent = content.profile.username || '';
         document.getElementById('profile-bio').textContent = content.profile.bio || '';
+        
         document.getElementById('post-name').textContent = content.profile.name || '—';
         document.getElementById('post-username').textContent = content.profile.username || '';
 
-        document.getElementById('profile-location').innerHTML =
-          '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>' + (content.profile.location || '') + '</span>';
+        document.getElementById('profile-location').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>' + (content.profile.location || '') + '</span>';
 
+        // Avatar principal
         if (content.profile.avatarUrl) {
           document.getElementById('avatar-img').src = content.profile.avatarUrl;
           document.getElementById('avatar-img').style.display = 'block';
           document.getElementById('avatar-letter').style.display = 'none';
+          // Avatar do post
+          document.getElementById('post-avatar-img').src = content.profile.avatarUrl;
+          document.getElementById('post-avatar-img').style.display = 'block';
+          document.getElementById('post-avatar-letter').style.display = 'none';
         } else {
           document.getElementById('avatar-letter').textContent = content.profile.avatarLetter || 'A';
+          document.getElementById('post-avatar-letter').textContent = content.profile.avatarLetter || 'A';
         }
 
         if (content.profile.bannerUrl) {
@@ -247,6 +268,10 @@
         document.getElementById('stat-images').textContent = content.stats.images ?? 0;
         document.getElementById('stat-videos').textContent = content.stats.videos ?? 0;
         document.getElementById('stat-likes').textContent = content.stats.likes ?? '0';
+        
+        document.getElementById('post-stat-images').textContent = content.stats.images ?? 0;
+        document.getElementById('post-stat-videos').textContent = content.stats.videos ?? 0;
+        document.getElementById('post-stat-likes').textContent = content.stats.likes ?? '0';
       }
 
       if (content.offer) {
@@ -255,9 +280,8 @@
         document.getElementById('offer-badge').textContent = content.offer.discountBadge || '';
 
         const price = Number(content.offer.price || 0);
-        const priceStr = price.toFixed(2).replace('.', ',');
         const btn = document.getElementById('offer-btn');
-        btn.textContent = `${content.offer.buttonText || 'Assinar agora'} R$ ${priceStr}`;
+        btn.textContent = `${content.offer.buttonText || 'Assinar agora'} R$ ${price.toFixed(2).replace('.', ',')}`;
         btn.dataset.price = price;
         btn.dataset.plan = content.plans?.[0]?.label || '1 mês';
 
@@ -268,30 +292,29 @@
       if (content.plans && content.plans.length) {
         const plansList = document.getElementById('plans-list');
         plansList.innerHTML = '';
-        const secondaryPlans = content.plans.filter(p => !p.highlight);
-        if (secondaryPlans.length === 0) {
-          content.plans.slice(1).forEach(p => renderPlan(plansList, p));
-        } else {
-          secondaryPlans.forEach(p => renderPlan(plansList, p));
+        content.plans.filter(p => !p.highlight).forEach(p => {
+          const btn = document.createElement('button');
+          btn.className = 'btn-gradient w-full flex justify-between items-center h-12 rounded-full px-4 font-bold text-black';
+          btn.dataset.plan = p.label;
+          btn.dataset.price = p.price;
+          btn.onclick = () => openCheckout(btn);
+          btn.innerHTML = `<span>${p.label}</span><span>R$ ${Number(p.price).toFixed(2).replace('.', ',')}</span>`;
+          plansList.appendChild(btn);
+        });
+      }
+
+      if (content.video) {
+        if (content.video.url) document.getElementById('post-video').src = content.video.url;
+        
+        // Se tiver Capa, mostra ela em vez do vídeo borrado
+        if (content.video.thumbUrl) {
+          document.getElementById('post-thumb').src = content.video.thumbUrl;
+          document.getElementById('post-thumb').style.display = 'block';
+          document.getElementById('post-video').style.display = 'none';
         }
       }
-
-      if (content.video?.url) {
-        document.getElementById('post-video').src = content.video.url;
-      }
     }
 
-    function renderPlan(container, p) {
-      const btn = document.createElement('button');
-      btn.className = 'btn-gradient w-full flex justify-between items-center h-12 rounded-full px-4 font-bold text-black';
-      btn.dataset.plan = p.label;
-      btn.dataset.price = p.price;
-      btn.onclick = () => openCheckout(btn);
-      btn.innerHTML = `<span>${p.label}</span><span>R$ ${Number(p.price).toFixed(2).replace('.', ',')}</span>`;
-      container.appendChild(btn);
-    }
-
-    /* ========= CHECKOUT ========= */
     let currentPlan = { name: '', price: 0 };
     let pollingInterval = null;
 
@@ -300,37 +323,27 @@
         currentPlan.name = btn.dataset.plan || 'Assinatura';
         currentPlan.price = parseFloat(btn.dataset.price || '19.95');
       } else {
-        // Se clicar no vídeo, pega o preço padrão da oferta
         currentPlan.name = siteContent?.offer?.buttonText || '1 mês';
         currentPlan.price = siteContent?.offer?.price || 19.95;
       }
 
-      // Atualiza o visual do Modal com os dados do perfil
       if (siteContent?.profile) {
         document.getElementById('modal-name').textContent = siteContent.profile.name || 'Criador';
         document.getElementById('modal-username').textContent = siteContent.profile.username || '@criador';
-        
         const img = document.getElementById('modal-avatar');
         const fallback = document.getElementById('modal-avatar-fallback');
-        
         if (siteContent.profile.avatarUrl) {
-          img.src = siteContent.profile.avatarUrl;
-          img.style.display = 'block';
-          fallback.style.display = 'none';
+          img.src = siteContent.profile.avatarUrl; img.style.display = 'block'; fallback.style.display = 'none';
         } else {
-          img.style.display = 'none';
-          fallback.style.display = 'flex';
-          fallback.textContent = siteContent.profile.avatarLetter || 'A';
+          img.style.display = 'none'; fallback.style.display = 'flex'; fallback.textContent = siteContent.profile.avatarLetter || 'A';
         }
       }
 
       document.getElementById('modal-price').textContent = 'R$ ' + currentPlan.price.toFixed(2).replace('.', ',');
-
       document.getElementById('step-form').style.display = 'block';
       document.getElementById('step-pix').style.display = 'none';
       document.getElementById('step-success').style.display = 'none';
       document.getElementById('modal-error').textContent = '';
-
       document.getElementById('checkout-modal').style.display = 'flex';
     }
 
@@ -342,36 +355,27 @@
     async function gerarPix() {
       const errEl = document.getElementById('modal-error');
       const btn = document.getElementById('btn-gerar-pix');
-
-      btn.disabled = true;
-      btn.textContent = 'Gerando PIX...';
-      errEl.textContent = '';
+      btn.disabled = true; btn.textContent = 'Gerando PIX...'; errEl.textContent = '';
 
       try {
-        // Envia o nome do criador do perfil ou "Cliente" para a API
         const nomeCliente = siteContent?.profile?.name || 'Cliente';
-
         const res = await fetch('/api/create-payment', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ valor: currentPlan.price, nome_cliente: nomeCliente })
         });
         const data = await res.json();
-
-        if (!data.success) throw new Error(data.error || 'Falha ao gerar o pagamento. Tente novamente.');
+        if (!data.success) throw new Error(data.error || 'Falha ao gerar o pagamento.');
 
         document.getElementById('pix-qr').src = data.qrCode;
         document.getElementById('pix-code').value = data.pixCode;
-
         document.getElementById('step-form').style.display = 'none';
         document.getElementById('step-pix').style.display = 'block';
-
         startPolling(data.paymentId);
       } catch (e) {
         errEl.textContent = e.message;
       } finally {
-        btn.disabled = false;
-        btn.textContent = 'Gerar PIX';
+        btn.disabled = false; btn.textContent = 'Gerar PIX';
       }
     }
 
@@ -382,8 +386,7 @@
           const res = await fetch('/api/check-payment?id=' + encodeURIComponent(id));
           const data = await res.json();
           if (data.success && data.isPaid) {
-            clearInterval(pollingInterval);
-            pollingInterval = null;
+            clearInterval(pollingInterval); pollingInterval = null;
             document.getElementById('step-pix').style.display = 'none';
             document.getElementById('step-success').style.display = 'block';
           }
@@ -392,8 +395,7 @@
     }
 
     function copyPix() {
-      const code = document.getElementById('pix-code').value;
-      navigator.clipboard.writeText(code).then(() => alert('Código copiado!'));
+      navigator.clipboard.writeText(document.getElementById('pix-code').value).then(() => alert('Código copiado!'));
     }
 
     function toggleAccordion(btn) {
@@ -404,23 +406,12 @@
       chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
     }
 
-    document.getElementById('checkout-modal').addEventListener('click', function(e) {
-      if (e.target === this) closeCheckout();
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeCheckout();
-    });
+    document.getElementById('checkout-modal').addEventListener('click', function(e) { if (e.target === this) closeCheckout(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeCheckout(); });
 
     loadSite();
     setInterval(loadSite, 120000);
   </script>
-
-  <style>
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-  </style>
+  <style>@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }</style>
 </body>
 </html>
