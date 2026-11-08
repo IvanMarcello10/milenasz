@@ -1,0 +1,165 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #0a0a0a;
+  color: #fafafa;
+  min-height: 100vh;
+}
+
+/* LOGIN */
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.login-box {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 24rem;
+  text-align: center;
+}
+.login-box h1 { margin: 0 0 0.5rem; }
+.login-box p { color: #9ca3af; margin: 0 0 1.25rem; }
+
+/* PANEL */
+.admin-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #1a1a1a;
+  border-bottom: 1px solid #333;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.admin-header h1 { font-size: 1.25rem; margin: 0; }
+.admin-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.admin-content {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  padding-bottom: 8rem;
+}
+
+/* CARDS */
+.card {
+  background: #1a1a1a;
+  border: 1px solid #262626;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.card h2 { margin: 0 0 1rem; font-size: 1.1rem; }
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.grid .full { grid-column: 1 / -1; }
+@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+.checkbox-label {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fafafa;
+}
+
+.input {
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+}
+.input:focus { border-color: #FAC59D; }
+
+/* BUTTONS */
+.btn-primary, .btn-secondary, .btn-danger {
+  padding: 0.65rem 1.1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: filter 0.15s;
+  font-family: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+.btn-primary {
+  background: linear-gradient(to right, #F69449, #FAC59D, #E0998C);
+  color: #000;
+}
+.btn-primary:hover { filter: brightness(1.1); }
+.btn-primary.big { padding: 0.9rem 2rem; font-size: 1rem; width: 100%; }
+
+.btn-secondary {
+  background: #262626;
+  color: #fafafa;
+  border: 1px solid #404040;
+}
+.btn-secondary:hover { background: #333; }
+
+.btn-danger { background: #7f1d1d; color: #fecaca; }
+.btn-danger:hover { background: #991b1b; }
+.btn-danger.small, .btn-secondary.small { padding: 0.4rem 0.7rem; font-size: 0.8rem; }
+
+.mt-2 { margin-top: 0.75rem; }
+
+/* PLANOS */
+.plan-item {
+  background: #0f0f0f;
+  border: 1px solid #262626;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.plan-item .btn-danger { margin-top: 0.75rem; }
+
+/* SAVE BAR */
+.save-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #1a1a1a;
+  border-top: 1px solid #333;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 5;
+}
+.save-bar button { max-width: 400px; }
+.save-status { font-weight: 600; font-size: 0.95rem; }
+.save-status.ok { color: #22c55e; }
+.save-status.err { color: #ef4444; }
+
+.error { color: #ef4444; font-size: 0.85rem; margin-top: 0.75rem; min-height: 1rem; }
