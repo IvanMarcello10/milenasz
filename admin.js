@@ -1,4 +1,3 @@
-// Base64 user:pass
 function getAuthHeader() {
   const auth = sessionStorage.getItem('admin_auth');
   return auth ? 'Basic ' + auth : '';
@@ -40,7 +39,7 @@ function logout() {
 let currentContent = null;
 
 async function loadContent() {
-  const res = await fetch('/api/content');
+  const res = await fetch('/api/content?t=' + Date.now(), { cache: 'no-store' });
   const data = await res.json();
   currentContent = data.content;
   renderForm();
@@ -66,14 +65,14 @@ function renderPlans() {
     div.className = 'plan-item';
     div.innerHTML = `
       <div class="grid">
-        <label>Label <input class="input" data-plan-index="${i}" data-plan-key="label" value="${plan.label}" /></label>
-        <label>Preço <input class="input" type="number" step="0.01" data-plan-index="${i}" data-plan-key="price" value="${plan.price}" /></label>
-        <label>Selo <input class="input" data-plan-index="${i}" data-plan-key="badge" value="${plan.badge || ''}" /></label>
+        <label>Label (Ex: 3 meses) <input class="input" data-plan-index="${i}" data-plan-key="label" value="${plan.label}" /></label>
+        <label>Preço (R$) <input class="input" type="number" step="0.01" data-plan-index="${i}" data-plan-key="price" value="${plan.price}" /></label>
+        <label>Selo (Ex: Mais Popular) <input class="input" data-plan-index="${i}" data-plan-key="badge" value="${plan.badge || ''}" /></label>
         <label class="checkbox-label">
-          <input type="checkbox" data-plan-index="${i}" data-plan-key="highlight" ${plan.highlight ? 'checked' : ''} /> Destacar
+          <input type="checkbox" data-plan-index="${i}" data-plan-key="highlight" ${plan.highlight ? 'checked' : ''} /> Destacar como principal
         </label>
       </div>
-      <button class="btn-danger small" onclick="removePlan(${i})">🗑️ Remover</button>
+      <button class="btn-danger small" onclick="removePlan(${i})" style="margin-top: 10px;">🗑️ Remover plano</button>
     `;
     container.appendChild(div);
   });
@@ -85,8 +84,8 @@ function addPlan() {
 }
 
 function removePlan(i) {
-  if (currentContent.plans.length <= 1) { alert('Precisa ter ao menos 1'); return; }
-  if (confirm('Remover?')) {
+  if (currentContent.plans.length <= 1) { alert('Precisa ter ao menos 1 plano cadastrado.'); return; }
+  if (confirm('Tem certeza que deseja remover este plano?')) {
     currentContent.plans.splice(i, 1);
     renderPlans();
   }
@@ -110,6 +109,46 @@ async function saveContent() {
     currentContent.plans[i][k] = v;
   });
 
+  await sendSaveRequest();
+}
+
+async function resetDefault() {
+  if (!confirm('⚠️ ATENÇÃO: Isso vai apagar todos os textos e fotos que você colocou e voltar tudo ao padrão de fábrica.\n\nTem certeza?')) return;
+
+  currentContent = {
+    site_ativo: true,
+    mensagem_manutencao: 'Estamos atualizando o site. Voltamos em alguns minutos!',
+    profile: { 
+      name: 'Milena', 
+      username: '@Mileninhasz', 
+      bio: 'A ruiva mais gostosa que você vai ver!! 🇧🇷...aqui você pode me conhecer melhor!! 😘\nPreparei um conteúdo exclusivo e sem censura que você não encontra em nenhum outro lugar ❤️😈', 
+      location: 'São Paulo - SP', 
+      avatarLetter: 'A', 
+      avatarUrl: '', 
+      bannerUrl: '' 
+    },
+    offer: { 
+      title: 'Oferta de assinatura', 
+      description: 'Aqui tem melhor sexo anal, toda branquinha bem gostosa!', 
+      buttonText: 'Assinar agora', 
+      price: 19.95, 
+      originalPrice: 21.00, 
+      discountBadge: 'Economize 5%' 
+    },
+    plans: [
+      { id: '1m', label: '1 mês', price: 19.95, badge: 'Economize 5%', highlight: true },
+      { id: '3m', label: '3 meses (50% off)', price: 31.50, badge: '', highlight: false },
+      { id: '6m', label: '6 meses (50% off)', price: 63.00, badge: '', highlight: false }
+    ],
+    video: { url: 'https://privacyhaellen.netlify.app/media/V%C3%ADdeo%201%20(1).mp4', thumbUrl: '' },
+    stats: { images: 434, videos: 765, likes: '4.6K' }
+  };
+  
+  renderForm();
+  await sendSaveRequest();
+}
+
+async function sendSaveRequest() {
   const statusEl = document.getElementById('save-status');
   statusEl.textContent = 'Salvando (commit no GitHub)...';
   statusEl.className = 'save-status';
@@ -126,13 +165,13 @@ async function saveContent() {
 
     if (res.status === 401) {
       sessionStorage.removeItem('admin_auth');
-      alert('Sessão expirada.');
+      alert('Sessão expirada. Faça login novamente.');
       location.reload();
       return;
     }
 
     const data = await res.json();
-    if (!data.success) throw new Error(data.error || 'Erro');
+    if (!data.success) throw new Error(data.error || 'Erro ao salvar');
 
     statusEl.textContent = '✅ Salvo! Aguarde ~30s para o site atualizar.';
     statusEl.className = 'save-status ok';
