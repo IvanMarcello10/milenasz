@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy</title>
-  <link rel="icon" href="./images/logo-white.png" />
+  <link rel="icon" href="./images/8_c466c9fff8082f3.svg" />
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
@@ -121,7 +121,7 @@
     </div>
   </main>
 
-  <!-- TELA DE MANUTENÇÃO (controlada por site_ativo) -->
+  <!-- TELA DE MANUTENÇÃO -->
   <div id="maintenance-screen" style="display:none; min-height:100vh; align-items:center; justify-content:center; text-align:center; padding:20px; background:#0a0a0a; color:#fff; font-family:Inter,sans-serif;">
     <div>
       <div style="font-size:3.5rem; margin-bottom:20px;">🔧</div>
@@ -130,91 +130,96 @@
     </div>
   </div>
 
-  <!-- ===================== MODAL CHECKOUT PIX ===================== -->
-  <div id="checkout-modal" class="modal-overlay" style="display:none;">
-    <div class="modal-box">
+  <!-- ===================== NOVO MODAL CHECKOUT (ESTILO DA IMAGEM) ===================== -->
+  <div id="checkout-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(4px); z-index:100; align-items:center; justify-content:center; padding:16px;">
+    <div style="background:#0a0a0a; border:1px solid #222; border-radius:16px; width:100%; max-width:380px; padding:24px; position:relative; font-family:'Inter',sans-serif; color:#fff;">
+      
+      <button onclick="closeCheckout()" style="position:absolute; top:16px; right:16px; background:none; border:none; color:#9ca3af; font-size:20px; cursor:pointer; line-height:1;">✕</button>
 
-      <!-- ETAPA 1: Formulário -->
+      <!-- Etapa 1: Confirmação -->
       <div id="step-form">
-        <div class="modal-header">
-          <h3>Finalizar assinatura</h3>
-          <button class="modal-close" onclick="closeCheckout()">&times;</button>
+        <div style="display:flex; gap:12px; align-items:center; margin-bottom:24px;">
+          <img id="modal-avatar" src="" style="width:56px; height:56px; border-radius:50%; object-fit:cover; display:none; border:2px solid #222;" />
+          <div id="modal-avatar-fallback" style="width:56px; height:56px; border-radius:50%; background:#222; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:20px;">A</div>
+          <div>
+            <h2 style="margin:0; font-size:16px; font-weight:700;" id="modal-name">Milena</h2>
+            <p style="margin:0; color:#9ca3af; font-size:14px;" id="modal-username">@Mileninhasz</p>
+          </div>
         </div>
-        <p class="modal-plan" id="modal-plan-label">Plano: —</p>
 
-        <label class="modal-label">Seu nome</label>
-        <input type="text" id="input-name" class="modal-input" placeholder="Digite seu nome" />
+        <h3 style="font-size:14px; margin-bottom:12px; font-weight:700;">Benefícios exclusivos</h3>
+        <ul style="list-style:none; padding:0; margin:0 0 24px 0; font-size:14px; color:#d1d5db; display:flex; flex-direction:column; gap:10px;">
+          <li style="display:flex; gap:8px; align-items:center;"><span style="color:#22c55e;">✓</span> Acesso ao conteúdo</li>
+          <li style="display:flex; gap:8px; align-items:center;"><span style="color:#22c55e;">✓</span> Chat exclusivo com o criador</li>
+          <li style="display:flex; gap:8px; align-items:center;"><span style="color:#22c55e;">✓</span> Cancele a qualquer hora</li>
+        </ul>
 
-        <button class="btn-gradient w-full h-12 rounded-full font-bold text-black mt-4" id="btn-gerar-pix" onclick="gerarPix()">
+        <hr style="border:0; border-top:1px solid #222; margin:0 0 16px 0;" />
+
+        <h3 style="font-size:14px; margin-bottom:12px; font-weight:700;">Pagar com Pix</h3>
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+          <span style="color:#9ca3af; font-size:14px;">Valor</span>
+          <span style="font-size:18px; font-weight:800;" id="modal-price">R$ 19,95</span>
+        </div>
+
+        <button class="btn-gradient w-full h-12 rounded-lg font-bold text-black" id="btn-gerar-pix" onclick="gerarPix()">
           Gerar PIX
         </button>
-        <p class="modal-error" id="modal-error"></p>
+        <p id="modal-error" style="color:#ef4444; font-size:12px; margin-top:12px; text-align:center;"></p>
       </div>
 
-      <!-- ETAPA 2: QR Code / Pagamento -->
-      <div id="step-pix" style="display:none;">
-        <div class="modal-header">
-          <h3>Aguardando pagamento</h3>
-          <button class="modal-close" onclick="closeCheckout()">&times;</button>
+      <!-- Etapa 2: Aguardando Pagamento -->
+      <div id="step-pix" style="display:none; text-align:center;">
+        <h3 style="font-size:16px; margin-bottom:16px; font-weight:700;">Escaneie o QR Code</h3>
+        <div style="background:#fff; padding:12px; border-radius:12px; display:inline-block; margin-bottom:16px;">
+          <img id="pix-qr" src="" alt="QR Code" style="width:180px; height:180px;" />
         </div>
-
-        <div class="pix-box">
-          <img id="pix-qr" src="" alt="QR Code PIX" />
-        </div>
-
-        <p class="text-sm text-gray-400 text-center mt-2">Escaneie o QR Code no app do banco</p>
-
-        <label class="modal-label mt-4">Ou copie o código PIX:</label>
-        <textarea id="pix-code" class="modal-input" rows="3" readonly></textarea>
-        <button class="btn-copy" onclick="copyPix()">📋 Copiar código PIX</button>
-
-        <div class="status-box">
-          <span class="status-dot"></span>
-          <span id="status-text">Aguardando confirmação...</span>
+        <p style="color:#9ca3af; font-size:12px; margin-bottom:12px;">Ou copie o código PIX abaixo:</p>
+        <textarea id="pix-code" style="width:100%; background:#111; border:1px solid #333; color:#fff; padding:10px; border-radius:8px; font-size:12px; font-family:monospace; resize:none; margin-bottom:12px;" rows="2" readonly></textarea>
+        <button onclick="copyPix()" style="width:100%; padding:12px; background:#222; color:#fff; border-radius:8px; border:none; font-weight:600; cursor:pointer; margin-bottom:24px;">📋 Copiar código</button>
+        
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px; font-size:14px; color:#fbbf24;">
+          <span style="width:8px; height:8px; background:#fbbf24; border-radius:50%; animation:pulse 1.5s infinite;"></span>
+          Aguardando pagamento...
         </div>
       </div>
 
-      <!-- ETAPA 3: Sucesso -->
-      <div id="step-success" style="display:none;">
-        <div class="modal-header">
-          <h3>✅ Pagamento confirmado!</h3>
-        </div>
-        <p class="text-center mt-4">Obrigado! Seu acesso foi liberado.</p>
-        <button class="btn-gradient w-full h-12 rounded-full font-bold text-black mt-6" onclick="closeCheckout()">Fechar</button>
+      <!-- Etapa 3: Sucesso -->
+      <div id="step-success" style="display:none; text-align:center; padding:24px 0;">
+        <div style="font-size:40px; margin-bottom:16px;">✅</div>
+        <h3 style="font-size:18px; margin-bottom:8px;">Pagamento Confirmado!</h3>
+        <p style="color:#9ca3af; font-size:14px;">Seu acesso foi liberado com sucesso.</p>
+        <button class="btn-gradient w-full h-12 rounded-lg font-bold text-black mt-6" onclick="closeCheckout()">Fechar</button>
       </div>
 
     </div>
   </div>
 
   <script>
-    /* ============================================================
-       CARREGAR CONTEÚDO DINÂMICO DO ADMIN
-       ============================================================ */
+    let siteContent = null; // Guarda os dados do site
+
     async function loadSite() {
       let content;
       try {
         const res = await fetch('/api/content', { cache: 'no-store' });
         const data = await res.json();
         content = data.content;
+        siteContent = content; // Salva globalmente
       } catch (e) {
-        console.warn('Falha ao carregar conteúdo, usando padrão:', e);
-        return; // mantém o HTML padrão
+        console.warn('Falha ao carregar conteúdo:', e);
+        return;
       }
 
       if (!content) return;
 
-      // ===== MANUTENÇÃO =====
       if (content.site_ativo === false) {
         document.getElementById('mainSite').style.display = 'none';
-        document.getElementById('maintenance-msg').textContent =
-          content.mensagem_manutencao || 'Voltamos em alguns minutos!';
-        const screen = document.getElementById('maintenance-screen');
-        screen.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        document.getElementById('maintenance-msg').textContent = content.mensagem_manutencao || 'Voltamos em breve!';
+        document.getElementById('maintenance-screen').style.display = 'flex';
         return;
       }
 
-      // ===== PERFIL =====
       if (content.profile) {
         document.getElementById('profile-name').textContent = content.profile.name || '—';
         document.getElementById('profile-username').textContent = content.profile.username || '';
@@ -223,8 +228,7 @@
         document.getElementById('post-username').textContent = content.profile.username || '';
 
         document.getElementById('profile-location').innerHTML =
-          '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>' +
-          (content.profile.location || '') + '</span>';
+          '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>' + (content.profile.location || '') + '</span>';
 
         if (content.profile.avatarUrl) {
           document.getElementById('avatar-img').src = content.profile.avatarUrl;
@@ -239,14 +243,12 @@
         }
       }
 
-      // ===== STATS =====
       if (content.stats) {
         document.getElementById('stat-images').textContent = content.stats.images ?? 0;
         document.getElementById('stat-videos').textContent = content.stats.videos ?? 0;
         document.getElementById('stat-likes').textContent = content.stats.likes ?? '0';
       }
 
-      // ===== OFERTA =====
       if (content.offer) {
         document.getElementById('offer-title-text').textContent = content.offer.title || 'Oferta';
         document.getElementById('offer-description').textContent = content.offer.description || '';
@@ -263,11 +265,9 @@
         document.getElementById('offer-original').textContent = 'R$ ' + orig.toFixed(2).replace('.', ',');
       }
 
-      // ===== PLANOS =====
       if (content.plans && content.plans.length) {
         const plansList = document.getElementById('plans-list');
         plansList.innerHTML = '';
-
         const secondaryPlans = content.plans.filter(p => !p.highlight);
         if (secondaryPlans.length === 0) {
           content.plans.slice(1).forEach(p => renderPlan(plansList, p));
@@ -276,7 +276,6 @@
         }
       }
 
-      // ===== VÍDEO =====
       if (content.video?.url) {
         document.getElementById('post-video').src = content.video.url;
       }
@@ -292,30 +291,45 @@
       container.appendChild(btn);
     }
 
-    /* ============================================================
-       CHECKOUT PIX
-       ============================================================ */
+    /* ========= CHECKOUT ========= */
     let currentPlan = { name: '', price: 0 };
     let pollingInterval = null;
-    let currentPaymentId = null;
 
     function openCheckout(btn) {
-      if (btn && btn.dataset) {
+      if (btn && btn.dataset && btn.dataset.price) {
         currentPlan.name = btn.dataset.plan || 'Assinatura';
         currentPlan.price = parseFloat(btn.dataset.price || '19.95');
       } else {
-        currentPlan.name = '1 mês';
-        currentPlan.price = 19.95;
+        // Se clicar no vídeo, pega o preço padrão da oferta
+        currentPlan.name = siteContent?.offer?.buttonText || '1 mês';
+        currentPlan.price = siteContent?.offer?.price || 19.95;
       }
 
-      document.getElementById('modal-plan-label').textContent =
-        'Plano: ' + currentPlan.name + ' — R$ ' + currentPlan.price.toFixed(2).replace('.', ',');
+      // Atualiza o visual do Modal com os dados do perfil
+      if (siteContent?.profile) {
+        document.getElementById('modal-name').textContent = siteContent.profile.name || 'Criador';
+        document.getElementById('modal-username').textContent = siteContent.profile.username || '@criador';
+        
+        const img = document.getElementById('modal-avatar');
+        const fallback = document.getElementById('modal-avatar-fallback');
+        
+        if (siteContent.profile.avatarUrl) {
+          img.src = siteContent.profile.avatarUrl;
+          img.style.display = 'block';
+          fallback.style.display = 'none';
+        } else {
+          img.style.display = 'none';
+          fallback.style.display = 'flex';
+          fallback.textContent = siteContent.profile.avatarLetter || 'A';
+        }
+      }
+
+      document.getElementById('modal-price').textContent = 'R$ ' + currentPlan.price.toFixed(2).replace('.', ',');
 
       document.getElementById('step-form').style.display = 'block';
       document.getElementById('step-pix').style.display = 'none';
       document.getElementById('step-success').style.display = 'none';
       document.getElementById('modal-error').textContent = '';
-      document.getElementById('input-name').value = '';
 
       document.getElementById('checkout-modal').style.display = 'flex';
     }
@@ -326,27 +340,25 @@
     }
 
     async function gerarPix() {
-      const name = document.getElementById('input-name').value.trim();
       const errEl = document.getElementById('modal-error');
       const btn = document.getElementById('btn-gerar-pix');
-
-      if (!name) { errEl.textContent = 'Digite seu nome.'; return; }
 
       btn.disabled = true;
       btn.textContent = 'Gerando PIX...';
       errEl.textContent = '';
 
       try {
+        // Envia o nome do criador do perfil ou "Cliente" para a API
+        const nomeCliente = siteContent?.profile?.name || 'Cliente';
+
         const res = await fetch('/api/create-payment', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ valor: currentPlan.price, nome_cliente: name })
+          body: JSON.stringify({ valor: currentPlan.price, nome_cliente: nomeCliente })
         });
         const data = await res.json();
 
-        if (!data.success) throw new Error(data.error || 'Erro ao criar pagamento');
-
-        currentPaymentId = data.paymentId;
+        if (!data.success) throw new Error(data.error || 'Falha ao gerar o pagamento. Tente novamente.');
 
         document.getElementById('pix-qr').src = data.qrCode;
         document.getElementById('pix-code').value = data.pixCode;
@@ -354,7 +366,7 @@
         document.getElementById('step-form').style.display = 'none';
         document.getElementById('step-pix').style.display = 'block';
 
-        startPolling(currentPaymentId);
+        startPolling(data.paymentId);
       } catch (e) {
         errEl.textContent = e.message;
       } finally {
@@ -375,15 +387,13 @@
             document.getElementById('step-pix').style.display = 'none';
             document.getElementById('step-success').style.display = 'block';
           }
-        } catch (e) { /* silencioso */ }
+        } catch (e) {}
       }, 5000);
     }
 
     function copyPix() {
       const code = document.getElementById('pix-code').value;
-      navigator.clipboard.writeText(code).then(() => {
-        alert('Código PIX copiado!');
-      });
+      navigator.clipboard.writeText(code).then(() => alert('Código copiado!'));
     }
 
     function toggleAccordion(btn) {
@@ -394,24 +404,23 @@
       chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
     }
 
-    // Fecha modal ao clicar fora
     document.getElementById('checkout-modal').addEventListener('click', function(e) {
       if (e.target === this) closeCheckout();
     });
 
-    // Fecha modal com ESC
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeCheckout();
     });
 
-    /* ============================================================
-       INIT
-       ============================================================ */
     loadSite();
-
-    // Atualiza a cada 2min (como o site Vó Áurea faz)
     setInterval(loadSite, 120000);
   </script>
 
+  <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
 </body>
 </html>
