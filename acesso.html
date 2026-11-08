@@ -9,14 +9,14 @@
 </head>
 <body>
 
-<!-- LOGIN -->
+<!-- TELA DE LOGIN -->
 <div id="login-screen" class="login-screen">
   <div class="login-box">
     <h1>🔒 Admin</h1>
     <p>Acesso restrito</p>
-    <input type="text" id="login-user" class="input" placeholder="Usuário" />
+    <input type="text" id="login-user" class="input" placeholder="Usuário" value="ivan" style="margin-bottom: 10px;" />
     <input type="password" id="login-password" class="input" placeholder="Senha" onkeydown="if(event.key==='Enter')doLogin()" />
-    <button class="btn-primary" onclick="doLogin()">Entrar</button>
+    <button class="btn-primary" onclick="doLogin()" style="margin-top: 10px; width: 100%;">Entrar</button>
     <p id="login-error" class="error"></p>
   </div>
 </div>
@@ -24,7 +24,7 @@
 <!-- PAINEL -->
 <div id="admin-panel" style="display:none;">
   <header class="admin-header">
-    <h1>⚙️ Painel</h1>
+    <h1>⚙️ Painel de Controle</h1>
     <div class="admin-actions">
       <a href="/" target="_blank" class="btn-secondary">👁️ Ver site</a>
       <button class="btn-secondary" onclick="logout()">Sair</button>
@@ -33,16 +33,18 @@
 
   <div class="admin-content">
 
+    <!-- SITE -->
     <section class="card">
-      <h2>⚡ Site</h2>
-      <label class="checkbox-label">
-        <input type="checkbox" data-path="site_ativo" /> Site ativo
+      <h2>⚡ Status do Site</h2>
+      <label class="checkbox-label" style="margin-bottom: 12px;">
+        <input type="checkbox" data-path="site_ativo" /> Site ativo (desmarque para manutenção)
       </label>
-      <label class="full mt-2">Mensagem de manutenção
+      <label class="full">Mensagem de manutenção
         <input class="input" data-path="mensagem_manutencao" />
       </label>
     </section>
 
+    <!-- PERFIL -->
     <section class="card">
       <h2>👤 Perfil</h2>
       <div class="grid">
@@ -50,44 +52,51 @@
         <label>@Username <input class="input" data-path="profile.username" /></label>
         <label>Localização <input class="input" data-path="profile.location" /></label>
         <label>Letra do Avatar <input class="input" data-path="profile.avatarLetter" maxlength="2" /></label>
-        <label class="full">URL do Avatar <input class="input" data-path="profile.avatarUrl" /></label>
-        <label class="full">URL do Banner <input class="input" data-path="profile.bannerUrl" /></label>
+        <label class="full">URL do Avatar <input class="input" data-path="profile.avatarUrl" placeholder="https://..." /></label>
+        <label class="full">URL do Banner <input class="input" data-path="profile.bannerUrl" placeholder="https://..." /></label>
         <label class="full">Bio <textarea class="input" rows="4" data-path="profile.bio"></textarea></label>
       </div>
     </section>
 
+    <!-- OFERTA -->
     <section class="card">
-      <h2>💰 Oferta</h2>
+      <h2>💰 Oferta Principal</h2>
       <div class="grid">
         <label>Título <input class="input" data-path="offer.title" /></label>
         <label>Texto do botão <input class="input" data-path="offer.buttonText" /></label>
         <label class="full">Descrição <textarea class="input" rows="2" data-path="offer.description"></textarea></label>
-        <label>Preço <input class="input" type="number" step="0.01" data-path="offer.price" /></label>
-        <label>Preço original <input class="input" type="number" step="0.01" data-path="offer.originalPrice" /></label>
-        <label class="full">Selo <input class="input" data-path="offer.discountBadge" /></label>
+        <label>Preço (R$) <input class="input" type="number" step="0.01" data-path="offer.price" /></label>
+        <label>Preço original (R$) <input class="input" type="number" step="0.01" data-path="offer.originalPrice" /></label>
+        <label class="full">Selo de desconto <input class="input" data-path="offer.discountBadge" /></label>
       </div>
     </section>
 
+    <!-- PLANOS -->
     <section class="card">
-      <h2>📦 Planos</h2>
+      <h2>📦 Planos de Assinatura</h2>
       <div id="plans-container"></div>
-      <button class="btn-secondary mt-2" onclick="addPlan()">+ Adicionar</button>
+      <button class="btn-secondary mt-2" onclick="addPlan()">+ Adicionar novo plano</button>
     </section>
 
+    <!-- VÍDEO & STATS -->
     <section class="card">
-      <h2>🎥 Vídeo & Stats</h2>
+      <h2>🎥 Vídeo & Estatísticas</h2>
       <div class="grid">
-        <label class="full">URL do vídeo <input class="input" data-path="video.url" /></label>
-        <label>Imagens <input class="input" type="number" data-path="stats.images" /></label>
-        <label>Vídeos <input class="input" type="number" data-path="stats.videos" /></label>
-        <label>Curtidas <input class="input" data-path="stats.likes" /></label>
+        <label class="full">URL do Vídeo (MP4) <input class="input" data-path="video.url" placeholder="https://.../video.mp4" /></label>
+        <label class="full">URL da Capa do Vídeo (Post) <input class="input" data-path="video.thumbUrl" placeholder="https://.../imagem.jpg" /></label>
+        <label>Qtd. Imagens <input class="input" type="number" data-path="stats.images" /></label>
+        <label>Qtd. Vídeos <input class="input" type="number" data-path="stats.videos" /></label>
+        <label class="full">Curtidas <input class="input" data-path="stats.likes" /></label>
       </div>
     </section>
 
-    <div class="save-bar">
-      <button class="btn-primary big" onclick="saveContent()">💾 Salvar (commit)</button>
-      <span id="save-status" class="save-status"></span>
+    <!-- BOTÕES DE AÇÃO -->
+    <div class="save-bar" style="display: flex; gap: 10px; justify-content: space-between;">
+      <button class="btn-danger" style="width: 30%;" onclick="resetDefault()">🔄 Restaurar Padrão</button>
+      <button class="btn-primary" style="width: 70%;" onclick="saveContent()">💾 Salvar Alterações</button>
+      <span id="save-status" class="save-status" style="position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%);"></span>
     </div>
+
   </div>
 </div>
 
