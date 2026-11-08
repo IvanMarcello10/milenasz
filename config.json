@@ -1,0 +1,30 @@
+{
+  "site_ativo": true,
+  "mensagem_manutencao": "Estamos atualizando o site. Voltamos em alguns minutos!",
+  "profile": {
+    "name": "Milena",
+    "username": "@Mileninhasz",
+    "bio": "A ruiva mais gostosa que você vai ver!! 🇧🇷...aqui você pode me conhecer melhor!! 😘\nPreparei um conteúdo exclusivo e sem censura que você não encontra em nenhum outro lugar ❤️😈",
+    "location": "São Paulo - SP",
+    "avatarLetter": "A",
+    "avatarUrl": "",
+    "bannerUrl": ""
+  },
+  "offer": {
+    "title": "Oferta de assinatura",
+    "description": "Aqui tem melhor sexo anal, toda branquinha bem gostosa!",
+    "buttonText": "Assinar agora",
+    "price": 19.95,
+    "originalPrice": 21.00,
+    "discountBadge": "Economize 5%"
+  },
+  "plans": [
+    { "id": "1m", "label": "1 mês", "price": 19.95, "badge": "Economize 5%", "highlight": true },
+    { "id": "3m", "label": "3 meses (50% off)", "price": 31.50, "badge": "", "highlight": false },
+    { "id": "6m", "label": "6 meses (50% off)", "price": 63.00, "badge": "", "highlight": false }
+  ],
+  "video": {
+    "url": "https://privacyhaellen.netlify.app/media/V%C3%ADdeo%201%20(1).mp4"
+  },
+  "stats": { "images": 434, "videos": 765, "likes": "4.6K" }
+}
